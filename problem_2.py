@@ -23,4 +23,4 @@ def problem2():
         f0 = f1
         f1 = fib
         fib = temp
-    print("    The sum is {sum}.".format(sum = sum))
+    print("    Answer: The sum is {sum}.".format(sum = sum))

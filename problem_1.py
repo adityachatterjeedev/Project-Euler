@@ -12,6 +12,6 @@ def problem1():
     for i in range(1000):
         if (i % 3 == 0) or (i % 5 == 0):
             sum += i
-    print("    The sum is {sum}." .format(sum = sum))
+    print("    Answer: The sum is {sum}." .format(sum = sum))
 
 
