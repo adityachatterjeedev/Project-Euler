@@ -145,7 +145,7 @@ def problem5():
     2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
     What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
     """
-    #These are the steps I took to optimise my program:
+    #These are the steps I took to optimise my program, as my initial implementation was woefully slow:
     #The problem itself tells us that 2520 is the smallest number that is divisible by the numbers 1 through 10
     #Thus it is a reasonable thing to assume that any number divisible by the numbers 1 through 20 must be a multiple of 2520
     #Furthermore, the first multiple of 2520 that is divisible by 11 is 2520 * 11 = 27720. However, this is not the 
