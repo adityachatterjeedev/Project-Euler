@@ -24,7 +24,7 @@ def problem3():
     prime_factor_list = []
 
     while (num > 1):
-        for i in range(2,num+1):
+        for i in range(2, num + 1):
             if num % i == 0 and is_prime(i):
                 if i not in prime_factor_list:
                     prime_factor_list.append(i)
