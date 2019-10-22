@@ -20,13 +20,19 @@ def problem3():
                 return False
         return True
 
-    num = 600851475144
+    num = 600851475143
     prime_factor_list = []
 
-    for i in range(2,num):
-        if num%i == 0 and is_prime(i):
-            prime_factor_list.append(i)
+    while (num > 1):
+        for i in range(2,num+1):
+            if num % i == 0 and is_prime(i):
+                if i not in prime_factor_list:
+                    prime_factor_list.append(i)
+                num = num // i
+                break
+        
+
 
     highest_prime_factor = max(prime_factor_list)
 
-    print("The highest prime factor of 600851475144 is {factor}.".format(factor = highest_prime_factor))
+    print("The highest prime factor of 600851475143 is {factor}.".format(factor = highest_prime_factor))
