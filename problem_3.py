@@ -35,4 +35,5 @@ def problem3():
 
     highest_prime_factor = max(prime_factor_list)
 
-    print("The highest prime factor of 600851475143 is {factor}.".format(factor = highest_prime_factor))
+    print(problem3.__doc__)
+    print("    The highest prime factor of 600851475143 is {factor}.".format(factor = highest_prime_factor))
