@@ -36,14 +36,12 @@ def problem2():
     """
     print(problem2.__doc__)
     sum = 0
-    f0 = 0
     f1 = 1
     fib = 1
     while (fib <= 4.0e6):
         if (fib % 2 == 0):
             sum += fib
         temp = f1 + fib #the next fibonacci number
-        f0 = f1
         f1 = fib
         fib = temp
     print("    Answer: The sum is {sum}.".format(sum = sum))
@@ -103,6 +101,7 @@ def problem4():
 
     for i in range(999,100,-1):
         for j in range(999,100,-1):
+            #Here we'll use the fact that a palindrome must be a multiple of 11.
             if (i % 11 == 0 or j % 11 == 0) and (i % 100 !=0 and j % 100 != 0):
                 prod = i*j
                 string = str(prod)
@@ -181,7 +180,8 @@ def problem6():
     answer = int(sum_of_numbers**2 - sum_squares)
 
     print(problem6.__doc__)
-    print("    Answer: The difference between the sum of the squares of the first one hundred natural numbers and the square of the sum is {answer}.".format(answer = answer))
+    print("    Answer: The difference between the sum of the squares of the first one hundred natural numbers \
+and the square of the sum is {answer}.".format(answer = answer))
 
 #Problem 7
 def problem7():
@@ -209,7 +209,7 @@ def problem7():
     print("    Answer: The 10001st prime number is {num}.".format(num = num))
 
 #------------------------------------------------------------------------------------------------------------------------------------------
-#-------------------------------------------------------- Helper functions ----------------------------------------------------------------
+#--------------------------------------------------------- Helper functions ---------------------------------------------------------------
 def is_prime(i: int):
         """
         Helper function for problem3() and problem7()
