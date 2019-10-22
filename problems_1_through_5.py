@@ -1,5 +1,9 @@
+"""
+A module that holds all the functions that calculate the solutions to Project Euler problems 1 through 5.
+"""
 import math
 
+#Problem 1
 def problem1():
     """
     Project Euler Problem 1
@@ -16,7 +20,7 @@ def problem1():
             sum += i
     print("    Answer: The sum is {sum}." .format(sum = sum))
 
-
+#Problem 2
 def problem2():
     """
     Project Euler Problem 2
@@ -44,7 +48,7 @@ def problem2():
         fib = temp
     print("    Answer: The sum is {sum}.".format(sum = sum))
 
-
+#Problem 3
 def problem3():
     """
     Project Euler Problem 3
@@ -84,7 +88,7 @@ def problem3():
     print(problem3.__doc__)
     print("    Answer: The highest prime factor of 600851475143 is {factor}.".format(factor = highest_prime_factor))
 
-
+#Problem 4
 def problem4():
     """
     Project Euler Problem 4
@@ -130,7 +134,7 @@ def problem4():
     print(problem4.__doc__)
     print("    Answer: The largest palindrome that is a product of two 3-digit numbers is {palindrome} which can be written as {palindrome} = {factor1} * {factor2}.".format(palindrome = max_palindrome, factor1 = factor1, factor2 = factor2))
 
-
+#Problem 5
 def problem5():
     """
     Project Euler Problem 5.
