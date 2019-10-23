@@ -1,7 +1,6 @@
 """
 A module that holds all the functions that calculate the solutions to Project Euler problems 1 through 5.
 """
-import math
 
 #Problem 1
 def problem1():
@@ -145,7 +144,7 @@ def problem5():
     #Furthermore, a little more analysis of the problem shows that in order for the number to be divisible by all 
     #numbers between 1 - 20, it is sufficient to check if it is divisible by the numbers 11, 13, 14, 16, 17, 18, 19, and 20.
     #However since we're testing multiples of 360360, which is divisible by 1 to 11 and 13, we only need to check for
-    #14, 16, 17 , 18, 19 and 20.
+    #14, 16, 17, 18, 19 and 20.
     flag = False
     num = 360360
     while not flag:
@@ -217,7 +216,7 @@ def is_prime(i: int):
         """
         if i == 2 or i == 3:
             return True
-        for j in range(2, int(math.sqrt(i) + 1)):
+        for j in range(2, int(i**0.5 + 1)):
             if i%j == 0:
                 return False
         return True
