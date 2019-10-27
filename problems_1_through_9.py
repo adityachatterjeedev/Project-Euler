@@ -6,7 +6,7 @@ import numpy as np
 #Problem 1
 def problem1():
     """
-    Project Euler Problem 1
+    Project Euler Problem 1 
     https://projecteuler.net/problem=1
 
     The problem:
@@ -23,7 +23,7 @@ def problem1():
 #Problem 2
 def problem2():
     """
-    Project Euler Problem 2
+    Project Euler Problem 2 
     https://projecteuler.net/problem=2
 
     The problem:
@@ -49,7 +49,7 @@ def problem2():
 #Problem 3
 def problem3():
     """
-    Project Euler Problem 3
+    Project Euler Problem 3 
     https://projecteuler.net/problem=3
 
     The problem:
@@ -79,7 +79,7 @@ def problem3():
 #Problem 4
 def problem4():
     """
-    Project Euler Problem 4
+    Project Euler Problem 4 
     https://projecteuler.net/problem=4
 
     The problem: 
@@ -126,7 +126,7 @@ def problem4():
 #Problem 5
 def problem5():
     """
-    Project Euler Problem 5.
+    Project Euler Problem 5. 
     https://projecteuler.net/problem=5
 
     The problem:
@@ -158,7 +158,7 @@ def problem5():
 #Problem 6
 def problem6():
     """
-    Project Euler Problem 6
+    Project Euler Problem 6 
     https://projecteuler.net/problem=6
 
     The problem:
@@ -186,7 +186,7 @@ and the square of the sum is {answer}.".format(answer = answer))
 #Problem 7
 def problem7():
     """
-    Project Euler Problem 7
+    Project Euler Problem 7 
     https://projecteuler.net/problem=7
 
     The problem:
@@ -211,7 +211,7 @@ def problem7():
 #Problem 8
 def problem8():
     """
-    Project Euler Problem 8
+    Project Euler Problem 8 
     https://projecteuler.net/problem=8
 
     The problem:
@@ -289,7 +289,7 @@ def problem8():
 #Problem 9
 def problem9():
     """
-    Project Euler Problem 9
+    Project Euler Problem 9 
     https://projecteuler.net/problem=9
 
     The problem:
@@ -349,13 +349,13 @@ def problem9():
 #------------------------------------------------------------------------------------------------------------------------------------------
 #--------------------------------------------------------- Helper functions ---------------------------------------------------------------
 def is_prime(i: int):
-        """
-        Helper function for problem3() and problem7()
-        Returns True if i is a prime number else False.
-        """
-        if i == 2 or i == 3:
-            return True
-        for j in range(2, int(i**0.5 + 1)):
-            if i%j == 0:
-                return False
+    """
+    Helper function for problem3() and problem7()
+    Returns True if i is a prime number else False.
+    """
+    if i == 2 or i == 3:
         return True
+    for j in range(2, int(i**0.5 + 1)):
+        if i%j == 0:
+            return False
+    return True
