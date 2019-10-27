@@ -359,7 +359,7 @@ def problem10():
     """
 
     sum = 0
-    for i in range(2, 2000001):
+    for i in range(2, 2000000):
         if is_prime(i):
             sum += i
 
@@ -375,7 +375,9 @@ def is_prime(i: int):
     """
     if i == 2 or i == 3:
         return True
+    if i % 2 == 0:
+        return False #small addition that significantly reduces the overall time required for Problem 10
     for j in range(2, int(i**0.5 + 1)):
         if i%j == 0:
             return False
-        return True
+    return True
