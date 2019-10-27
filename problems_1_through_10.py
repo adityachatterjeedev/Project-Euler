@@ -346,6 +346,26 @@ def problem9():
     product = np.prod(answer)
     print(problem9.__doc__)
     print("    Answer: The Pythagorean triple that sums to 1000 is ({a}, {b}, {c}) and the product of these three numbers is {prod}.".format(a = answer[0], b = answer[1], c = answer[2], prod = product))
+
+#Problem 10
+def problem10():
+    """
+    Project Euler Problem 10 
+    https://projecteuler.net/problem=10
+
+    The problem:\n
+    The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+    Find the sum of all the primes below two million.
+    """
+
+    sum = 0
+    for i in range(2, 2000001):
+        if is_prime(i):
+            sum += i
+
+    print(problem10.__doc__)
+    print("    Answer: The sum of all primes less than 2 million is {sum}.".format(sum = sum))
+    
 #------------------------------------------------------------------------------------------------------------------------------------------
 #--------------------------------------------------------- Helper functions ---------------------------------------------------------------
 def is_prime(i: int):
@@ -358,4 +378,4 @@ def is_prime(i: int):
     for j in range(2, int(i**0.5 + 1)):
         if i%j == 0:
             return False
-    return True
+        return True
