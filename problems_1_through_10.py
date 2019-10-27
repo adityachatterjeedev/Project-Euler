@@ -370,7 +370,7 @@ def problem10():
 #--------------------------------------------------------- Helper functions ---------------------------------------------------------------
 def is_prime(i: int):
     """
-    Helper function for problem3() and problem7()
+    Helper function for Problems 3, 7, and 10
     Returns True if i is a prime number else False.
     """
     if i == 2 or i == 3:
