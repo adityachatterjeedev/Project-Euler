@@ -1,6 +1,7 @@
 """
-A module that holds all the functions that calculate the solutions to Project Euler problems 1 through 8.
+A module that holds all the functions that calculate the solutions to Project Euler problems 1 through 9.
 """
+import numpy as np
 
 #Problem 1
 def problem1():
@@ -101,7 +102,7 @@ def problem4():
     for i in range(999,100,-1):
         for j in range(999,100,-1):
             #Here we'll use the fact that a palindrome must be a multiple of 11.
-            if (i % 11 == 0 or j % 11 == 0) and (i % 100 !=0 and j % 100 != 0):
+            if (i % 11 == 0 or j % 11 == 0):
                 prod = i*j
                 string = str(prod)
                 if is_palindrome(string):
@@ -285,6 +286,66 @@ def problem8():
     print(problem8.__doc__)
     print("    Answer: The thirteen adjacent digits in the 1000-digit number that have the greatest product are {factor_string} = {prod}.".format(factor_string = factor_string, prod = max_prod))
 
+#Problem 9
+def problem9():
+    """
+    Project Euler Problem 9
+    https://projecteuler.net/problem=9
+
+    The problem:
+
+    A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
+    a**2 + b**2 = c**2
+
+    For example, 3**2 + 4**2 = 9 + 16 = 25 = 5**2.
+
+    There exists exactly one Pythagorean triplet for which a + b + c = 1000.
+    Find the product abc.
+    """
+    # 200, 375, 425 is the triplet we need.
+    #This uses the ancient algorithm 2mn, m**2 - n**2, m**2 + n**2 to find a Pythagorean triplet.
+
+    def gcd(a,b):
+        """
+        Euclid's gcd algorithm. A briliant algorithm in my opinion.
+        """
+        if b > a:
+            return gcd(b,a)
+        elif b == 0:
+            return a
+        else:
+            r = a%b
+            return gcd(b,r)
+
+    m = 2
+    primitives_list = []
+    while m < 200:
+        for n in range(1,m):
+            a = 2*m*n 
+            b = m**2 - n**2
+            c = m**2 + n**2
+            if gcd(b,a) == 1 and gcd(c,a) == 1 and gcd(c,b) == 1:
+                arr = np.array([a,b,c])
+                primitives_list.append(arr)
+        m += 1
+
+    answer = np.array([0,0,0])
+    for primitive in primitives_list:
+        foundflag = False
+        
+        for i in range(1, 51):
+            temp = primitive * i
+            if sum(temp) == 1000:
+                answer = temp
+                foundflag =  True
+                break
+
+        if foundflag:
+            break
+
+    product = np.prod(answer)
+    print(problem9.__doc__)
+    print("    Answer: The Pythagorean triple that sums to 1000 is ({a}, {b}, {c}) and the product of these three numbers is {prod}.".format(a = answer[0], b = answer[1], c = answer[2], prod = product))
 #------------------------------------------------------------------------------------------------------------------------------------------
 #--------------------------------------------------------- Helper functions ---------------------------------------------------------------
 def is_prime(i: int):
