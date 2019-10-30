@@ -1,5 +1,5 @@
 """
-A module that holds all the functions that calculate the solutions to Project Euler problems 1 through 9.
+A module that holds all the functions that calculate the solutions to Project Euler problems 1 through 10.
 """
 import numpy as np
 
