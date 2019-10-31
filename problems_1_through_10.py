@@ -374,11 +374,9 @@ def is_prime(i: int):
     Returns True if i is a prime number else False.
     """
     if(i <= 1):
-        raise ValueError("is_prime only checks numbers greater than or equal to 2")
+        raise ValueError("is_prime() only checks numbers greater than or equal to 2")
     if i == 2 or i == 3:
         return True
-    if i % 2 == 0:
-        return False #small addition that significantly reduces the overall time required for Problem 10
     for j in range(2, int(i**0.5 + 1)):
         if i%j == 0:
             return False
