@@ -373,6 +373,8 @@ def is_prime(i: int):
     Helper function for Problems 3, 7, and 10
     Returns True if i is a prime number else False.
     """
+    if(i <= 1):
+        raise ValueError("is_prime only checks numbers greater than or equal to 2")
     if i == 2 or i == 3:
         return True
     if i % 2 == 0:
