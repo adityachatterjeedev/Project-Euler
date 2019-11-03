@@ -375,8 +375,6 @@ def is_prime(i: int):
     """
     if(i <= 1):
         raise ValueError("is_prime() only checks numbers greater than or equal to 2")
-    if i == 2 or i == 3:
-        return True
     for j in range(2, int(i**0.5 + 1)):
         if i%j == 0:
             return False
