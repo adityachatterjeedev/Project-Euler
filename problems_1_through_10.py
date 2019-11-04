@@ -307,7 +307,7 @@ def problem9():
 
     def gcd(a,b):
         """
-        Euclid's gcd algorithm. A briliant algorithm in my opinion.
+        Euclid's gcd algorithm. A brilliant algorithm in my opinion.
         """
         if b > a:
             return gcd(b,a)
@@ -369,7 +369,7 @@ def problem10():
 #--------------------------------------------------------- Helper functions ---------------------------------------------------------------
 def is_prime(i: int):
     """
-    Helper function for Problems 3, 7, and 10
+    Helper function for Problems 3 and 7
     Returns True if i is a prime number else False.
     """
     if(i <= 1):
@@ -399,8 +399,9 @@ def sieve_of_eratosthenes(n: int):
                 j += i
     
     return_list = []
+
     for i in range(2, n + 1):
         if bool_list[i]:
             return_list.append(i)
-            
+
     return return_list
