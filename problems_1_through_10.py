@@ -359,9 +359,8 @@ def problem10():
     """
 
     sum = 0
-    for i in range(2, 2000000):
-        if is_prime(i):
-            sum += i
+    for i in sieve_of_eratosthenes(2000000):
+        sum += i
 
     print(problem10.__doc__)
     print("    Answer: The sum of all primes less than 2 million is {sum}.".format(sum = sum))
@@ -379,3 +378,29 @@ def is_prime(i: int):
         if i%j == 0:
             return False
     return True
+
+def sieve_of_eratosthenes(n: int):
+    """
+    Returns a list of all primes between 2 and n.
+
+    Implements the Sieve of Eratosthenes, a prime number finding algorithm, with a small optimisation as found on
+    Wikipedia.
+    """
+    bool_list = [False, False]
+
+    for i in range(2, n + 1):
+        bool_list.append(True)
+
+    for i in range(2, int((n+1)**0.5 + 1)):
+        if bool_list[i]:
+            j = i**2
+            while j < n + 1:
+                bool_list[j] = False
+                j += i
+    
+    return_list = []
+    for i in range(2, n + 1):
+        if bool_list[i]:
+            return_list.append(i)
+            
+    return return_list
