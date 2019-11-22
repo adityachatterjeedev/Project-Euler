@@ -121,7 +121,8 @@ def problem4():
     factor2 = factors[1]
 
     print(problem4.__doc__)
-    print("    Answer: The largest palindrome that is a product of two 3-digit numbers is {palindrome} which can be written as {palindrome} = {factor1} * {factor2}.".format(palindrome = max_palindrome, factor1 = factor1, factor2 = factor2))
+    print("    Answer: The largest palindrome that is a product of two 3-digit numbers is {palindrome} which \
+can be written as {palindrome} = {factor1} * {factor2}.".format(palindrome = max_palindrome, factor1 = factor1, factor2 = factor2))
 
 #Problem 5
 def problem5():
@@ -284,7 +285,8 @@ def problem8():
     factor_string = ' x '.join(max_prod_key)
     
     print(problem8.__doc__)
-    print("    Answer: The thirteen adjacent digits in the 1000-digit number that have the greatest product are {factor_string} = {prod}.".format(factor_string = factor_string, prod = max_prod))
+    print("    Answer: The thirteen adjacent digits in the 1000-digit number that have the greatest \
+product are {factor_string} = {prod}.".format(factor_string = factor_string, prod = max_prod))
 
 #Problem 9
 def problem9():
@@ -345,7 +347,8 @@ def problem9():
 
     product = np.prod(answer)
     print(problem9.__doc__)
-    print("    Answer: The Pythagorean triple that sums to 1000 is ({a}, {b}, {c}) and the product of these three numbers is {prod}.".format(a = answer[0], b = answer[1], c = answer[2], prod = product))
+    print("    Answer: The Pythagorean triple that sums to 1000 is ({a}, {b}, {c}) and the product of these \
+three numbers is {prod}.".format(a = answer[0], b = answer[1], c = answer[2], prod = product))
 
 #Problem 10
 def problem10():

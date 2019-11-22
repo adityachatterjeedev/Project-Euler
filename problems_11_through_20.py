@@ -1,6 +1,7 @@
 """
 A module that holds the functions that calculate the solutions to Project Euler problems 11 through 20.
 """
+#\033[92m \033[00m
 import numpy as np
 
 #Problem 11
@@ -25,10 +26,10 @@ def problem11():
     21 36 23 09 75 00 76 44 20 45 35\033[91m 14\033[00m 00 61 33 97 34 31 33 95
     78 17 53 28 22 75 31 67 15 94 03 80 04 62 16 14 09 53 56 92
     16 39 05 42 96 35 31 47 55 58 88 24 00 17 54 24 36 29 85 57
-    86 56 00 48 35 71 89 07 05 44 44 37 44 60 21 58 51 54 17 58
-    19 80 81 68 05 94 47 69 28 73 92 13 86 52 17 77 04 89 55 40
-    04 52 08 83 97 35 99 16 07 97 57 32 16 26 26 79 33 27 98 66
-    88 36 68 87 57 62 20 72 03 46 33 67 46 55 12 32 63 93 53 69
+    86 56 00 48 35 71 \033[92m89\033[00m 07 05 44 44 37 44 60 21 58 51 54 17 58
+    19 80 81 68 05 \033[92m94\033[00m 47 69 28 73 92 13 86 52 17 77 04 89 55 40
+    04 52 08 83 \033[92m97\033[00m 35 99 16 07 97 57 32 16 26 26 79 33 27 98 66
+    88 36 68 \033[92m87\033[00m 57 62 20 72 03 46 33 67 46 55 12 32 63 93 53 69
     04 42 16 73 38 25 39 11 24 94 72 18 08 46 29 32 40 62 76 36
     20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74 04 36 16
     20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
@@ -37,6 +38,8 @@ def problem11():
     The product of these numbers is 26 × 63 × 78 × 14 = 1788696.
 
     What is the greatest product of four adjacent numbers in the same direction (up, down, left, right, or diagonally) in the 20×20 grid?
+    
+    Note: The four numbers whose product is the answer have been marked in green.
     """
     #the products from left to right will be the same as the products from right to left.
     #similarly the products from up to down will be the same as the products from down to up
@@ -233,7 +236,9 @@ def problem11():
 
 
     print(problem11.__doc__)
-    print("    Answer: The largest product of 4 adjacent numbers is {product}, which is the product of the 4 numbers {num1} * {num2} * {num3} * {num4}.".format(product = final_prod, num1 = final_key[0], num2 = final_key[1], num3 = final_key[2], num4 = final_key[3]))
+    print("    Answer: The largest product of 4 adjacent numbers is {product}, which is the product of the 4 numbers \
+{num1} * {num2} * {num3} * {num4}.".format(product = final_prod, num1 = \
+final_key[0], num2 = final_key[1], num3 = final_key[2], num4 = final_key[3]))
 
 #Problem 12
 def problem12():
