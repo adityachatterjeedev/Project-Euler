@@ -6,7 +6,8 @@ from problems_11_through_20 import *
 
 problem_dict = {1 : problem1, 2 : problem2, 3 : problem3, 4 : problem4, 5 : problem5, 
                 6 : problem6, 7: problem7, 8: problem8, 9 : problem9, 10 : problem10,
-                11: problem11, 12: problem12, 13: problem13, 14: problem14, 15: problem15}
+                11: problem11, 12: problem12, 13: problem13, 14: problem14, 15: problem15,
+                16: problem16}
 
 def solve_problems():
     """

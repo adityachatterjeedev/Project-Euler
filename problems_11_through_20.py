@@ -526,3 +526,28 @@ exactly 6 routes to the bottom right corner.
     print(problem15.__doc__)
     print("    Answer: The total number of routes in a 20x20 grid is {answer}.".format(answer = answer))
 
+#Problem 16
+def problem16():
+    """
+    Project Euler Problem 16
+    https://projecteuler.net/problem=16
+
+    The problem:
+
+    2**15 = 32768 and the sum of its digits is 3 + 2 + 7 + 6 + 8 = 26.
+
+    What is the sum of the digits of the number 2**1000?
+    """
+    num = 2**1000
+
+    sum_of_digits = 0
+    while True:
+        if num < 10:
+            sum_of_digits += num
+            break
+        else:
+            sum_of_digits += num % 10
+            num = num // 10
+    print(problem16.__doc__)
+    print("    Answer: The sum of the digits of 2**1000 is {num}.".format(num = sum_of_digits))
+    
