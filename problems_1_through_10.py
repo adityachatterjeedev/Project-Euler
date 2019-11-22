@@ -1,5 +1,5 @@
 """
-A module that holds all the functions that calculate the solutions to Project Euler problems 1 through 10.
+A module that holds the functions that calculate the solutions to Project Euler problems 1 through 10.
 """
 import numpy as np
 
@@ -405,3 +405,4 @@ def sieve_of_eratosthenes(n: int):
             return_list.append(i)
 
     return return_list
+    
