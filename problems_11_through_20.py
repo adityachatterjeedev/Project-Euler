@@ -488,3 +488,41 @@ def problem14():
     print(problem14.__doc__)
     print("    Answer: The number with the longest Collatz sequence is {num} with a sequence length of \
 {length}.".format(num = max_length_num, length = max_length))
+
+#Problem 15
+def problem15():
+    """
+    Project Euler Problem 15
+    https://projecteuler.net/problem=15
+
+    The problem:
+
+    Starting in the top left corner of a 2×2 grid, and only being able to move to the right and down, there are \
+exactly 6 routes to the bottom right corner.
+
+    How many such routes are there through a 20×20 grid?
+    """
+    #This problem can be simplified by a series of inferences.
+    #First, we see that the Manhattan Distance of the bottom right corner from the top left corner is 40
+    #Secondly, to get from the top left to the bottom right, it will always take us 40 steps (from the above inference)
+    #ie 20 steps to the right and 20 steps down.
+    #So, this problem then simplifies to "How many permutations of 40 steps such that 20 steps are to the right
+    #and 20 steps are downwards exist?", the answer to which is:
+    #    
+    #                40!
+    #           -------------
+    #             20! * 20!
+    #
+    # At this point the program merely serves as a calculator!
+    def fact(n: int):
+        """
+        Function to calculate the factorial of n.
+        """
+        if n == 1:
+            return 1
+        return n * fact(n - 1)
+
+    answer = int(fact(40)/(fact(20) ** 2))
+    print(problem15.__doc__)
+    print("    Answer: The total number of routes in a 20x20 grid is {answer}.".format(answer = answer))
+
