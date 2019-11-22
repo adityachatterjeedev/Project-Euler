@@ -428,3 +428,63 @@ def problem13():
 
     print(problem13.__doc__)
     print("    Answer: The ten most significant digits of the final sum are {num}.".format(num = final_sum_string))
+
+#Problem 14
+def problem14():
+    """
+    Project Euler Problem 14
+    https://projecteuler.net/problem=14
+
+    The problem:
+
+    The following iterative sequence is defined for the set of positive integers:
+
+    n → n/2 (n is even)
+    n → 3n + 1 (n is odd)
+
+    Using the rule above and starting with 13, we generate the following sequence:
+    13 → 40 → 20 → 10 → 5 → 16 → 8 → 4 → 2 → 1
+
+    It can be seen that this sequence (starting at 13 and finishing at 1) contains 10 terms.
+    Although it has not been proved yet (Collatz Problem), it is thought that all starting numbers finish at 1.
+
+    Which starting number, under one million, produces the longest chain?
+
+    NOTE: Once the chain starts the terms are allowed to go above one million.
+    """
+
+    def collatz_length(num: int):
+        """
+        Returns the length of the Collatz Sequence of num.
+        """
+        temp = num
+        counter = 1
+        if temp == 1:
+            return 1
+        while temp != 1:
+            assert temp > 0, "Something's gone wrong in your calculations"
+            counter += 1
+            if temp % 2 == 0:
+                temp = temp//2
+            else:
+                temp = 3 * temp + 1
+        return counter
+
+    lengths_list = []
+    # print("Appending to lengths_list")
+    for i in range(1, 1000000):
+        # print(i)
+        lengths_list.append(collatz_length(i))
+
+    max_length = lengths_list[0]
+    max_length_num = 1
+    # print("Inside lengths_list")
+    for i in range(999998):
+        # print(i)
+        if lengths_list[i] > max_length:
+            max_length = lengths_list[i]
+            max_length_num = i + 1
+
+    print(problem14.__doc__)
+    print("    Answer: The number with the longest Collatz sequence is {num} with a sequence length of \
+{length}.".format(num = max_length_num, length = max_length))
