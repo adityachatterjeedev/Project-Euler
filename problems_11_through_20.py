@@ -521,13 +521,6 @@ exactly 6 routes to the bottom right corner.
     #             20! * 20!
     #
     # At this point the program merely serves as a calculator!
-    def fact(n: int):
-        """
-        Function to calculate the factorial of n.
-        """
-        if n == 1:
-            return 1
-        return n * fact(n - 1)
 
     answer = int(fact(40)/(fact(20) ** 2))
     print(problem15.__doc__)
@@ -547,14 +540,8 @@ def problem16():
     """
     num = 2**1000
 
-    sum_of_digits = 0
-    while True:
-        if num < 10:
-            sum_of_digits += num
-            break
-        else:
-            sum_of_digits += num % 10
-            num = num // 10
+    sum_of_digits = sum_digits(num)
+
     print(problem16.__doc__)
     print("    Answer: The sum of the digits of 2**1000 is {num}.".format(num = sum_of_digits))
     
@@ -726,3 +713,104 @@ Find the maximum total from top to bottom of the triangle below:
     print(problem18.__doc__)
     print('    Answer: The max. total from top to bottom is {string} = {totalsum}.'.\
 format(string = ' + '.join(number_list), totalsum = largest_sum))
+
+#Problem 19
+def problem19():
+    """
+    Project Euler Problem 19
+    https://projecteuler.net/problem=19
+
+    The problem:
+
+    You are given the following information, but you may prefer to do some research for yourself.
+
+        - 1 Jan 1900 was a Monday.
+
+        - Thirty days has September,
+          April, June and November.
+          All the rest have thirty-one,
+          Saving February alone,
+          Which has twenty-eight, rain or shine.
+        And on leap years, twenty-nine.
+
+        - A leap year occurs on any year evenly divisible by 4, but not on a century unless it is divisible by 400.
+
+    How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?
+    """
+    #We will map each day of the week to a number from 0 to 6, with 0 being Sunday and 6 being Saturday
+
+    month_dict = { #stores the number of days in every month
+        0: 31,
+        1: 28,
+        2: 31,
+        3: 30,
+        4: 31,
+        5: 30,
+        6: 31,
+        7: 31,
+        8: 30,
+        9: 31,
+        10: 30,
+        11: 31
+    }
+
+    counter = 0
+    first = 2 #the first of January 1901 was a Tuesday
+
+    for year in range(1901, 2001):
+        if year % 4 == 0:
+            month_dict[1] = 29
+        else:
+            month_dict[1] = 28
+
+        for month in range(12):
+            if first == 0:
+                counter += 1
+            first += month_dict[month]
+            first = first % 7
+    
+    print(problem19.__doc__)
+    print("    Answer: {num} Sundays fell on the first of the month during 1 Jan 1901 to 31 Dec 2000.".format(num = counter))
+
+#Problem 20
+def problem20():
+    """
+    Project Euler Problem 20
+    https://projecteuler.net/problem=20
+
+    The problem:
+
+    n! means n × (n − 1) × ... × 3 × 2 × 1
+
+    For example, 10! = 10 × 9 × ... × 3 × 2 × 1 = 3628800,
+    and the sum of the digits in the number 10! is 3 + 6 + 2 + 8 + 8 + 0 + 0 = 27.
+
+    Find the sum of the digits in the number 100!
+    """
+
+    print(problem20.__doc__)
+    print("Answer: The sum of the digits of 100! is {num}".format(num = sum_digits(fact(100))))
+#------------------------------------------------------------------------------------------------------------------------------------------
+#--------------------------------------------------------- Helper functions ---------------------------------------------------------------
+
+def sum_digits(num: int):
+    """
+    Returns the sum of the digits of num.
+    """
+    sum_of_digits = 0
+    while True:
+        if num < 10:
+            sum_of_digits += num
+            break
+        else:
+            sum_of_digits += num % 10
+            num = num // 10
+    return sum_of_digits
+
+def fact(n: int):
+    """
+    Function to calculate the factorial of n.
+    """
+    if n == 1:
+        return 1
+    return n * fact(n - 1)
