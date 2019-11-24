@@ -5,7 +5,8 @@ A module that holds the functions that calculate the solutions to Project Euler 
 import numpy as np
 import os
 my_path = os.path.abspath(os.path.dirname(__file__))
-path = os.path.join(my_path, "numbers.txt")
+numbers_path = os.path.join(my_path, "numbers.txt")
+triangle_path = os.path.join(my_path, "triangle.txt")
 
 import string
 lowercase = string.ascii_lowercase
@@ -423,7 +424,7 @@ def problem13():
     #Using only the first 15 digits makes our code much more space-efficient, since the amount of memory required to store
     #100 15-digit numbers is obviously much less than the amount required to store 100 50-digit numbers.
     number_list = []
-    with open(path, 'r') as file:
+    with open(numbers_path, 'r') as file:
         num = file.readline()
         while num:
             temp = num[:15]
@@ -660,3 +661,68 @@ def problem17():
 
     print(problem17.__doc__)
     print("    Answer: If all the numbers from 1 to 1000 were written out, you'd need {num} letters.".format(num = total_letters))
+
+#Problem 18
+def problem18():
+    """
+    Project Euler Problem 18
+    https://projecteuler.net/problem=18
+
+    The Problem:
+
+
+
+By starting at the top of the triangle below and moving to adjacent numbers on the row below, the maximum total from top to bottom is 23.
+
+                    \033[91m3\033[00m
+                   \033[91m7\033[00m 4
+                  2 \033[91m4\033[00m 6
+                 8 5 \033[91m9\033[00m 3
+
+That is, 3 + 7 + 4 + 9 = 23.
+
+Find the maximum total from top to bottom of the triangle below:
+
+                                                75
+                                              95 64
+                                            17 47 82
+                                           18 35 87 10
+                                         20 04 82 47 65
+                                        19 01 23 75 03 34
+                                      88 02 77 73 07 63 67
+                                     99 65 04 28 06 16 70 92
+                                    41 41 26 56 83 40 80 70 33
+                                  41 48 72 33 47 32 37 16 94 29
+                                53 71 44 65 25 43 91 52 97 51 14
+                               70 11 33 28 77 73 17 78 39 68 17 57
+                             91 71 52 38 17 14 91 43 58 50 27 29 48
+                            63 66 04 68 89 53 67 30 73 16 69 87 40 31
+                          04 62 98 27 23 09 70 98 73 93 38 53 60 04 23
+
+    """
+    triangle = []
+    with open(triangle_path, 'r') as file:
+        string = file.readline()
+        while string:
+            string = string[:-1]
+            triangle.append(string.split(' '))
+            string = file.readline()
+    
+    newtriangle = []
+    for row in triangle:
+        rowlist = []
+        for numstring in row:
+            num = int(numstring)
+            rowlist.append(num)
+        newtriangle.append(rowlist)
+    triangle = newtriangle
+
+    number_list = []
+    for i in reversed(range(len(triangle) - 1)):
+        for j in range(len(triangle[i])):
+            triangle[i][j] += max(triangle[i + 1][j], triangle[i + 1][j + 1])
+    largest_sum = triangle[0][0]
+    
+    print(problem18.__doc__)
+    print('    Answer: The max. total from top to bottom is {string} = {totalsum}.'.\
+format(string = ' + '.join(number_list), totalsum = largest_sum))
