@@ -280,7 +280,7 @@ def problem12():
     #Here we can use the fact that triangle_number_n is given by n*(n+1)/2
     def num_factors(n: int):
         """
-        A program to find the number of factors of a given integer.
+        Finds the number of factors of n.
         """
         factor_list = []
         for i in range(1, int(n ** 0.5 + 1)):
