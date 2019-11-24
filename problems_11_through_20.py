@@ -1,11 +1,17 @@
 """
 A module that holds the functions that calculate the solutions to Project Euler problems 11 through 20.
 """
-#\033[92m \033[00m
+#######################################################  Setup  ####################################################################
 import numpy as np
 import os
 my_path = os.path.abspath(os.path.dirname(__file__))
 path = os.path.join(my_path, "numbers.txt")
+
+import string
+lowercase = string.ascii_lowercase
+lowercase = lowercase + ' -'
+
+#####################################################  End Setup  #################################################################
 
 #Problem 11
 def problem11():
@@ -551,3 +557,106 @@ def problem16():
     print(problem16.__doc__)
     print("    Answer: The sum of the digits of 2**1000 is {num}.".format(num = sum_of_digits))
     
+
+#Problem 17
+def problem17():
+    """
+    Project Euler Problem 17
+    https://projecteuler.net/problem=17
+
+    The problem:
+
+    If the numbers 1 to 5 are written out in words: one, two, three, four, five, then there are 3 + 3 + 5 + 4 + 4 = 19 letters used in total.
+
+    If all the numbers from 1 to 1000 (one thousand) inclusive were written out in words, how many letters would be used?
+
+    NOTE: Do not count spaces or hyphens. For example, 342 (three hundred and forty-two) contains 23 letters and 115 (one hundred and fifteen) contains 20 letters. 
+    The use of "and" when writing out numbers is in compliance with British usage.
+    """
+    def convert_to_words(num: int):
+        """
+        Converts num to its English representation.
+
+        For example, convert_to_words(5) = 'five'
+
+        //This was such a pain to write. Not because it's difficult, but because it's mind-bogglingly annoying.
+        //This function is not perfect. I could've implemented a version where the string for any number
+        // 20 <= num < 100 does not have a trailing hyphen ('-') but I didn't bother because it's useless for the 
+        //purpose of this problem. 
+        """
+        number_dict = {
+            1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five',
+            6: 'six', 7: 'seven', 8: 'eight', 9: 'nine', 10: 'ten',
+            11: 'eleven', 12: 'twelve', 13: 'thirteen', 14: 'fourteen', 15: 'fifteen',
+            16: 'sixteen', 17: 'seventeen', 18: 'eighteen', 19: 'nineteen'
+        }
+        if num == 0:
+            return ''
+        
+        elif num == 1000:
+            return 'one thousand'
+        
+        elif num in number_dict:
+            return number_dict.get(num)
+        
+        elif num < 100:
+            if (20 <= num) and (num < 30):
+                return 'twenty-' + convert_to_words(num % 10)
+            elif (30 <= num) and (num < 40):
+                return 'thirty-' + convert_to_words(num % 10)
+            elif (40 <= num) and (num < 50):
+                return 'forty-' + convert_to_words(num % 10)
+            elif (50 <= num) and (num < 60):
+                return 'fifty-' + convert_to_words(num % 10)
+            elif (60 <= num) and (num < 70):
+                return 'sixty-' + convert_to_words(num % 10)
+            elif (70 <= num) and (num < 80):
+                return 'seventy-' + convert_to_words(num % 10)
+            elif (80 <= num) and (num < 90):
+                return 'eighty-' + convert_to_words(num % 10)
+            elif (90 <= num) and (num < 100):
+                return 'ninety-' + convert_to_words(num % 10)
+        
+        elif (num % 100 == 0):
+            return convert_to_words(num//100) + ' hundred'
+        
+        else: #if 100 <= num < 1000
+            if (100 < num) and (num < 200):
+                return 'one hundred and ' + convert_to_words(num % 100)
+            elif (200 < num) and (num < 300):
+                return 'two hundred and ' + convert_to_words(num % 100)
+            elif (300 < num) and (num < 400):
+                return 'three hundred and ' + convert_to_words(num % 100)
+            elif (400 < num) and (num < 500):
+                return 'four hundred and ' + convert_to_words(num % 100)
+            elif (500 < num) and (num < 600):
+                return 'five hundred and ' + convert_to_words(num % 100)
+            elif (600 < num) and (num < 700):
+                return 'six hundred and ' + convert_to_words(num % 100)
+            elif (700 < num) and (num < 800):
+                return 'seven hundred and ' + convert_to_words(num % 100)
+            elif (800 < num) and (num < 900):
+                return 'eight hundred and ' + convert_to_words(num % 100)
+            elif (900 < num) and (num < 1000):
+                return 'nine hundred and ' + convert_to_words(num % 100)
+
+
+    def count_letters(num_string: str):
+        """
+        Counts the number of characters in string, without counting spaces or hyphens
+        """
+        counter = 0
+        for i in num_string:
+            if i not in lowercase:
+                raise ValueError("{string} cannot be processed by the function.".format(string = num_string))
+            if i not in [' ', '-']:
+                counter += 1
+        return counter
+
+    total_letters = 0
+
+    for i in range(1,1001):
+        total_letters += count_letters(convert_to_words(i))
+
+    print(problem17.__doc__)
+    print("    Answer: If all the numbers from 1 to 1000 were written out, you'd need {num} letters.".format(num = total_letters))
