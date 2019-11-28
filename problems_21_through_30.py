@@ -131,6 +131,63 @@ def problem23():
     print(problem23.__doc__)
     print("    Answer: The sum of all positive integers that cannot be written as a sum of abundant numbers \
 is {num}.".format(num = total_sum))
+
+#Problem 24
+def problem24():
+    """
+    Project Euler Problem 24
+    https://projecteuler.net/problem=24
+
+    The problem:
+
+    A permutation is an ordered arrangement of objects. For example, 3124 is one possible permutation of the digits 1, 2, 3 and 4. 
+    If all of the permutations are listed numerically or alphabetically, we call it lexicographic order. 
+    The lexicographic permutations of 0, 1 and 2 are:
+
+    012   021   102   120   201   210
+
+    What is the millionth lexicographic permutation of the digits 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9?
+    """
+    #To reduce computation time, we apply a little domain knowledge.
+    #we know that the total number of possible permutations is 10!
+    #Keeping any one digit fixed at the first position, the number of permutations reduces to 9!, which is 362880.
+    #this tells us that the millionth permutation must have 2 as its first digit. So, instead of our permutation function
+    #running 10! times it only needs to run 9! times which is an entire order of magnitude lesser.
+    #Thus the 1 millionth permutation of '0123456789' is the 274240th permutation of '013456789'
+    
+    def swap(s: str, i: int, j: int):
+        """
+        Returns a copy of s with the letter at s[i] swapped with the letter at s[j].
+        Preconditions: i,j < len(s). Will exit non-gracefully otherwise.
+        """
+        l1 = list(s)
+        temp = l1[i]
+        l1[i] = l1[j]
+        l1[j] = temp
+        return ''.join(l1)
+    
+    def permute(s: str):
+        """
+        Returns a list of all possible permutations of s.
+        """
+        if len(s) == 1:
+            return [s]
+        else:
+            perms_list = []
+            for i in range(len(s)):
+                temp_string = swap(s, 0, i)
+                for perm in permute(temp_string[1:]):
+                    temp_perm = temp_string[0] + perm
+                    perms_list.append(temp_perm)
+            return perms_list
+        
+    permutation_list = permute('013456789')
+    permutation_list.sort()
+    perm = permutation_list[274239]
+    permutation = '2' + perm
+    print(problem24.__doc__)
+    print("    Answer: The 1-millionthlexicographic permutation of the digits is {perm}.".format(perm = permutation))
+    
 #------------------------------------------------------------------------------------------------------------------------------------------
 #--------------------------------------------------------- Helper functions ---------------------------------------------------------------
 
