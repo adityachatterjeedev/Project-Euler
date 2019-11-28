@@ -187,7 +187,68 @@ def problem24():
     permutation = '2' + perm
     print(problem24.__doc__)
     print("    Answer: The 1-millionthlexicographic permutation of the digits is {perm}.".format(perm = permutation))
-    
+
+
+#Problem 25
+def problem25():
+    """
+    Project Euler Problem 25
+    https://projecteuler.net/problem=25
+
+    The problem:
+
+    The Fibonacci sequence is defined by the recurrence relation:
+
+        F(n) = F(n−1) + F(n−2), where F(1) = 1 and F(2) = 1.
+
+    Hence the first 12 terms will be:
+
+        F(1) = 1
+        F(2) = 1
+        F(3) = 2
+        F(4) = 3
+        F(5) = 5
+        F(6) = 8
+        F(7) = 13
+        F(8) = 21
+        F(9) = 34
+        F(10) = 55
+        F(11) = 89
+        F(12) = 144
+
+    The 12th term, F(12), is the first term to contain three digits.
+
+    What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
+    """
+    def num_digits(n: int):
+        """
+        Returns the number of digits in n
+        """
+        return len(str(n))
+
+    fib_dict = {1: 1, 2: 1}    
+    def fib(n: int):
+        """
+        Returns the nth term of the Fibonacci sequence
+
+        A dict is used here to speed up the overall solution to Problem 25
+        """
+        if n in fib_dict:
+            return fib_dict[n]
+        else:
+            fib_dict[n] = fib(n - 1) + fib(n - 2)
+            return fib_dict[n]
+
+
+    #Here we use a small optimisation to improve the speed. From domain knowledge we know that F(4000) has 836 digits
+    #So we start our search from F(4001)
+    num = 1
+    while num_digits(fib(num)) < 1000:
+        num += 1
+
+    print(problem25.__doc__)
+    print("    Answer: The {num}th Fibonacci number is the first one with 1000 digits.".format(num = num))
+
 #------------------------------------------------------------------------------------------------------------------------------------------
 #--------------------------------------------------------- Helper functions ---------------------------------------------------------------
 
